@@ -1,0 +1,142 @@
+import { Award, Compass, Microscope, ShieldCheck, Target } from "lucide-react";
+import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
+import CTASection from "@/components/CTASection";
+import { disciplines } from "@/lib/data";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Hakkımızda",
+  description:
+    "Beş disiplini tek çatı altında birleştiren, teşhise dayalı operasyonel mükemmellik danışmanlığı felsefemiz.",
+};
+
+const principles = [
+  {
+    icon: Microscope,
+    title: "Önce Teşhis, Sonra Reçete",
+    desc: "Hiçbir çözümü, kapsamlı bir veri analizi ve kök neden doğrulaması yapılmadan önermeyiz.",
+  },
+  {
+    icon: Target,
+    title: "Ölçülebilir Etki",
+    desc: "Her proje, finansal ve operasyonel etkisi net biçimde tanımlanmış hedeflerle başlar.",
+  },
+  {
+    icon: Compass,
+    title: "Bütünsel Bakış",
+    desc: "Süreci, insanı, veriyi ve riski aynı anda ele alan bütünleşik bir metodoloji kullanırız.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Kurumsal Dayanıklılık",
+    desc: "İyileştirmenin kalıcı olmasını, risk yönetimi ve standardizasyonla güvence altına alırız.",
+  },
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Hakkımızda"
+        title="Operasyonel Mükemmellik İçin Kurulmuş Bir Teşhis Otoritesi"
+        desc="Biz geleneksel bir Yalın danışmanlığı değiliz. Beş farklı yönetim disiplinini tek bir teşhis ve tedavi felsefesi altında birleştiren stratejik bir operasyonel mükemmellik firmasıyız."
+      />
+
+      <section className="section-pad bg-charcoal-900">
+        <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          <div className="lg:col-span-6">
+            <SectionHeading
+              eyebrow="Felsefemiz"
+              title="Teşhis Edemediğiniz Şeyi İyileştiremezsiniz"
+            />
+            <Reveal delay={0.1}>
+              <div className="mt-8 space-y-5 text-white/60 leading-relaxed text-base">
+                <p>
+                  Çoğu danışmanlık firması, doğrudan çözümle işe başlar. Biz tam tersini yapıyoruz:
+                  önce belirtileri dinler, sonra veriyi analiz eder, ancak kök neden doğrulandıktan
+                  sonra bir tedavi planı öneririz.
+                </p>
+                <p>
+                  Bu yaklaşım bizi McKinsey&apos;in stratejik disiplini, Toyota Üretim
+                  Sistemi&apos;nin sahaya dayalı pratikliği, Six Sigma Black Belt&apos;in analitik
+                  titizliği, Kurumsal Risk Yönetimi&apos;nin ileri görüşlülüğü ve İş Zekasının
+                  veri gücünü birleştiren bir konsept haline getirir.
+                </p>
+                <p>
+                  Amacımız yalnızca bir iyileştirme projesi teslim etmek değil; işletmenizin kendi
+                  kendini teşhis edebilen, sürekli iyileşen bir organizmaya dönüşmesini sağlamaktır.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {principles.map((p, i) => (
+                <Reveal key={p.title} delay={i * 0.08}>
+                  <div className="card-premium h-full">
+                    <p.icon size={24} className="text-gold-500" strokeWidth={1.5} />
+                    <h3 className="mt-5 text-base font-semibold text-white">{p.title}</h3>
+                    <p className="mt-2.5 text-sm text-white/50 leading-relaxed">{p.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-navy-gradient relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="container-max relative">
+          <SectionHeading
+            eyebrow="Entegre Model"
+            title="Beş Disiplin, Tek Yönetim Felsefesi"
+            desc="Bu beş disiplini birbirinden bağımsız hizmetler olarak değil, birbirini besleyen tek bir teşhis-tedavi sistemi olarak uyguluyoruz."
+          />
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-5 gap-px bg-white/10 rounded-sm overflow-hidden">
+            {disciplines.map((d, i) => (
+              <Reveal key={d.key} delay={i * 0.06} className="h-full">
+                <div className="bg-navy-900 h-full p-8">
+                  <span className="font-display text-2xl text-gold-500">0{i + 1}</span>
+                  <h3 className="mt-5 text-base font-semibold text-white leading-snug">
+                    {d.title}
+                  </h3>
+                  <p className="mt-3 text-xs text-white/45 leading-relaxed">{d.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-charcoal-900">
+        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          <Reveal>
+            <div className="glass-panel rounded-sm p-10 md:p-14">
+              <Award size={30} className="text-gold-500" strokeWidth={1.5} />
+              <h3 className="font-display text-2xl md:text-3xl text-white mt-6 leading-snug">
+                Yönetim Kurullarının Güvendiği Danışman
+              </h3>
+              <p className="mt-5 text-white/55 leading-relaxed">
+                CEO&apos;lar, Fabrika Müdürleri, COO&apos;lar ve Yönetim Kurulları ile doğrudan
+                çalışıyor; teknik bulguları stratejik kararlara dönüştürüyoruz. Raporlarımız saha
+                dilinde değil, yönetim kurulu dilinde konuşur.
+              </p>
+            </div>
+          </Reveal>
+          <div>
+            <SectionHeading
+              eyebrow="Kimlerle Çalışıyoruz"
+              title="Üst Yönetim İçin Tasarlanmış Bir Danışmanlık Deneyimi"
+              desc="Sahadan topladığımız her veri, üst yönetim için anlamlı, aksiyona dönüştürülebilir içgörülere çevrilir. Teknik derinlik ile stratejik netliği aynı anda sunarız."
+            />
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  );
+}
