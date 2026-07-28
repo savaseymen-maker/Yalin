@@ -4,6 +4,7 @@ export const nav = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetler", label: "Hizmetler" },
+  { href: "/uretim-hatti-paneli", label: "Üretim Panosu" },
   { href: "/metodolojiler", label: "Metodolojiler" },
   { href: "/sektorler", label: "Sektörler" },
   { href: "/vaka-calismalari", label: "Vaka Çalışmaları" },
@@ -449,4 +450,45 @@ export const stats = [
   { value: "%18", label: "Ortalama Maliyet Azaltımı" },
   { value: "10", label: "Sektörde Derin Tecrübe" },
   { value: "5", label: "Entegre Disiplin" },
+];
+
+// ------------------------------------------------------------------
+// Üretim Hattı Yönetim Panosu — Örnek Demo Verisi
+// ------------------------------------------------------------------
+export const productionLineKpis = [
+  { key: "oee", label: "OEE (Genel Ekipman Etkinliği)", value: 78, target: 85, unit: "%", delta: 3.2 },
+  { key: "availability", label: "Kullanılabilirlik", value: 91, target: 95, unit: "%", delta: 1.1 },
+  { key: "performance", label: "Performans", value: 88, target: 92, unit: "%", delta: -0.8 },
+  { key: "quality", label: "Kalite (İlk Seferde Doğru - FTY)", value: 97.4, target: 99, unit: "%", delta: 0.4 },
+  { key: "output", label: "Saatlik Çıktı", value: 342, target: 380, unit: "adet/sa", delta: 12 },
+  { key: "downtime", label: "Plansız Duruş", value: 46, target: 20, unit: "dk/vardiya", delta: -18, invert: true },
+  { key: "scrap", label: "Fire Oranı", value: 2.1, target: 1.0, unit: "%", delta: -0.3, invert: true },
+  { key: "energy", label: "Enerji Yoğunluğu", value: 1.34, target: 1.1, unit: "kWh/adet", delta: 0.06, invert: true },
+];
+
+export const productionLineStations = [
+  { name: "Hammadde Besleme", status: "ok", throughput: 412 },
+  { name: "Kesim", status: "ok", throughput: 398 },
+  { name: "Kaynak", status: "warning", throughput: 356 },
+  { name: "Montaj", status: "ok", throughput: 351 },
+  { name: "Kalite Kontrol", status: "warning", throughput: 342 },
+  { name: "Paketleme", status: "stopped", throughput: 0 },
+] as const;
+
+export const productionLineOeeTrend = [71, 73, 70, 75, 77, 74, 79, 76, 80, 78, 81, 78];
+
+export const productionLineDowntimeReasons = [
+  { reason: "Planlı Bakım Dışı Arıza", minutes: 142 },
+  { reason: "Model/Ürün Değişimi (Setup)", minutes: 96 },
+  { reason: "Malzeme Bekleme", minutes: 71 },
+  { reason: "Kalite Kontrol Duruşu", minutes: 54 },
+  { reason: "Operatör Değişimi", minutes: 28 },
+];
+
+export const productionLineAlerts = [
+  { time: "08:42", severity: "critical", text: "Paketleme istasyonu durdu — sensör arızası şüphesi." },
+  { time: "08:35", severity: "warning", text: "Kaynak istasyonunda sıcaklık kontrol limiti dışına çıktı (SPC uyarısı)." },
+  { time: "08:21", severity: "warning", text: "Kalite kontrolde art arda 3 ölçüm toleransın altında kaldı." },
+  { time: "07:58", severity: "info", text: "Vardiya devri tamamlandı, standart iş kontrol listesi onaylandı." },
+  { time: "07:40", severity: "info", text: "SMED hedefine göre model değişimi 8 dakika erken tamamlandı." },
 ];
