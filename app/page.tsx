@@ -29,6 +29,7 @@ import {
   Bot,
   ShoppingBag,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -42,6 +43,7 @@ import {
   prescriptionItems,
   stats,
   academyTotalModules,
+  trustStrip,
 } from "@/lib/data";
 
 const pillars = [
@@ -102,7 +104,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-gradient pt-28">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-gradient pt-28 md:pt-32">
         <div className="absolute inset-0 bg-noise opacity-40" />
         <div className="absolute top-1/4 -right-40 h-[32rem] w-[32rem] rounded-full bg-gold-500/10 blur-3xl animate-float" />
         <div className="absolute bottom-0 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl" />
@@ -147,6 +149,18 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* TRUST STRIP */}
+      <div className="relative border-y border-white/[0.06] bg-navy-950">
+        <div className="container-max flex flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 md:px-12 lg:px-20 py-5">
+          {trustStrip.map((item) => (
+            <span key={item} className="flex items-center gap-2 text-xs md:text-sm text-white/55">
+              <CheckCircle2 size={15} className="text-gold-500 shrink-0" strokeWidth={1.75} />
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* PLATFORM PILLARS */}
       <section className="section-pad bg-navy-gradient relative overflow-hidden">

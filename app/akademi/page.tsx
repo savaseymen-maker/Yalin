@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
+  ArrowRight,
+  Download,
   FileText,
   Presentation,
   NotebookPen,
@@ -55,6 +57,40 @@ export default function AcademyPage() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* LEAD MAGNET */}
+      <section className="section-pad bg-navy-gradient relative overflow-hidden !py-16 md:!py-20">
+        <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="container-max relative">
+          <Reveal>
+            <div className="glass-panel rounded-sm !border-orange-500/25 p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div className="flex items-start gap-5">
+                <div className="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-500/10 border border-orange-500/30">
+                  <Download size={20} className="text-orange-400" strokeWidth={1.75} />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest2 text-orange-400 font-semibold mb-2">
+                    Ücretsiz Örnek Modül
+                  </p>
+                  <h3 className="text-xl md:text-2xl font-semibold text-white leading-snug">
+                    5S Eğitimini Ücretsiz Deneyin
+                  </h3>
+                  <p className="mt-2 text-sm text-white/55 leading-relaxed max-w-xl">
+                    PDF kitap, kontrol listesi ve Excel şablonuyla birlikte tam bir modülü satın
+                    almadan önce inceleyin.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/iletisim"
+                className="inline-flex items-center justify-center gap-2 rounded-sm bg-orange-500 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-navy-950 transition-all duration-300 hover:bg-orange-400 hover:shadow-[0_0_30px_rgba(249,115,22,0.35)] shrink-0 w-full md:w-auto"
+              >
+                Ücretsiz Örnek Modülü İste <ArrowRight size={16} />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

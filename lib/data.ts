@@ -453,6 +453,17 @@ export const insights = [
   },
 ];
 
+// ------------------------------------------------------------------
+// Güven Şeridi — Ana Sayfa Hero Altı
+// ------------------------------------------------------------------
+export const trustStrip = [
+  "20+ Yıl Saha Deneyimi",
+  "Türkçe & İngilizce İçerik",
+  "AI Destekli Öğrenme",
+  "Kurumsal Akademi Lisansı",
+  "Sertifikalı Eğitimler",
+];
+
 export const stats = [
   { value: "150+", label: "Tamamlanan Proje" },
   { value: "%18", label: "Ortalama Maliyet Azaltımı" },
@@ -656,6 +667,35 @@ export const digitalProducts = [
   { title: "İç Denetim Formları", desc: "Sistematik iç denetim yürütme dokümanları." },
   { title: "Risk Matrisi Şablonları", desc: "Operasyonel risklerin önceliklendirilmesi için matrisler." },
   { title: "Operasyonel Sağlık Raporları", desc: "Check-Up sonrası örnek yönetim raporu formatı, 100 sayfaya kadar." },
+];
+
+export const digitalProductCategories = [
+  {
+    title: "Kitaplar & Sunumlar",
+    items: ["PDF Kitaplar", "E-Kitaplar", "Eğitim Sunumları"],
+  },
+  {
+    title: "Video & Avatar İçerikleri",
+    items: ["AI Avatar Videoları"],
+  },
+  {
+    title: "Şablonlar & Hesaplayıcılar",
+    items: [
+      "Excel Araçları", "KPI Dashboard Şablonları", "OEE Hesaplayıcıları",
+      "SPC Şablonları", "FMEA Şablonları", "VSM Şablonları", "Risk Matrisi Şablonları",
+    ],
+  },
+  {
+    title: "Kontrol & Denetim Formları",
+    items: [
+      "Kontrol Listeleri", "Denetim Formları", "Kaizen Formları",
+      "A3 Problem Çözme Formları", "İç Denetim Formları",
+    ],
+  },
+  {
+    title: "Yönetim Raporları",
+    items: ["Operasyonel Sağlık Raporları"],
+  },
 ];
 
 // ------------------------------------------------------------------

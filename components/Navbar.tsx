@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, Mail, Download } from "lucide-react";
 import { nav, moreLinks } from "@/lib/data";
 
 export default function Navbar() {
@@ -23,11 +23,31 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-nav" : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 inset-x-0 z-50">
+      {/* UTILITY BAR */}
+      <div className="hidden md:block bg-navy-950 border-b border-white/[0.06]">
+        <div className="container-max flex items-center justify-between px-6 md:px-12 lg:px-20 h-9 text-[12px]">
+          <div className="flex items-center gap-6 text-white/50">
+            <a href="tel:+902120000000" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
+              <Phone size={12} strokeWidth={1.75} /> +90 212 000 00 00
+            </a>
+            <a
+              href="mailto:iletisim@yalin-consulting.com"
+              className="hidden lg:flex items-center gap-1.5 hover:text-gold-400 transition-colors"
+            >
+              <Mail size={12} strokeWidth={1.75} /> iletisim@yalin-consulting.com
+            </a>
+          </div>
+          <Link href="/akademi" className="flex items-center gap-1.5 text-gold-400 hover:text-gold-300 transition-colors">
+            <Download size={12} strokeWidth={1.75} /> Ücretsiz Örnek Modül İndirin
+          </Link>
+        </div>
+      </div>
+
+      {/* MAIN NAV */}
+      <div
+        className={`transition-all duration-500 ${scrolled ? "glass-nav" : "bg-transparent md:bg-navy-950/40"}`}
+      >
       <div className="container-max flex items-center justify-between px-6 md:px-12 lg:px-20 h-20">
         <Link href="/" className="flex items-baseline gap-2 group">
           <span className="font-display text-2xl tracking-tight text-white">YALIN</span>
@@ -66,6 +86,7 @@ export default function Navbar() {
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
+      </div>
       </div>
 
       {open && (
