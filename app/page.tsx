@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  ArrowUpRight,
   Factory,
   ClipboardList,
   Warehouse,
@@ -24,6 +25,11 @@ import {
   Pill,
   ShieldCheck,
   Eye,
+  GraduationCap,
+  Bot,
+  ShoppingBag,
+  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -36,7 +42,42 @@ import {
   checkupCategories,
   prescriptionItems,
   stats,
+  academyTotalModules,
+  trustStrip,
 } from "@/lib/data";
+
+const pillars = [
+  {
+    href: "/hizmetler",
+    icon: Stethoscope,
+    title: "Danışmanlık",
+    desc: "Yerinde operasyonel teşhis, Six Sigma projeleri ve dönüşüm danışmanlığı.",
+  },
+  {
+    href: "/akademi",
+    icon: GraduationCap,
+    title: "Akademi",
+    desc: `${academyTotalModules}+ modüllük dijital operasyonel mükemmellik eğitim kütüphanesi.`,
+  },
+  {
+    href: "/akademi/ai-avatar",
+    icon: Sparkles,
+    title: "AI Avatar Akademisi",
+    desc: "Türkçe ve İngilizce, dijital avatar tarafından anlatılan video eğitimler.",
+  },
+  {
+    href: "/dijital-urunler",
+    icon: ShoppingBag,
+    title: "Dijital Ürünler",
+    desc: "Şablonlar, hesaplayıcılar, kontrol listeleri ve KPI dashboard'ları.",
+  },
+  {
+    href: "/ai-asistan",
+    icon: Bot,
+    title: "AI Asistan",
+    desc: "Şirketinizin kendi verisiyle çalışan operasyon GPT'niz.",
+  },
+];
 
 const hiddenCostIcons = [
   Factory,
@@ -63,14 +104,14 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-gradient pt-28">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-gradient pt-28 md:pt-32">
         <div className="absolute inset-0 bg-noise opacity-40" />
         <div className="absolute top-1/4 -right-40 h-[32rem] w-[32rem] rounded-full bg-gold-500/10 blur-3xl animate-float" />
         <div className="absolute bottom-0 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl" />
 
         <div className="container-max relative px-6 md:px-12 lg:px-20 py-16">
           <Reveal>
-            <p className="eyebrow mb-6">Stratejik Operasyonel Mükemmellik Danışmanlığı</p>
+            <p className="eyebrow mb-6">Operasyonel Mükemmellik Akademisi &amp; Danışmanlık</p>
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="font-display text-balance max-w-5xl text-4xl sm:text-5xl md:text-7xl leading-[1.05] tracking-tight text-white">
@@ -106,6 +147,49 @@ export default function HomePage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* TRUST STRIP */}
+      <div className="relative border-y border-white/[0.06] bg-navy-950">
+        <div className="container-max flex flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 md:px-12 lg:px-20 py-5">
+          {trustStrip.map((item) => (
+            <span key={item} className="flex items-center gap-2 text-xs md:text-sm text-white/55">
+              <CheckCircle2 size={15} className="text-gold-500 shrink-0" strokeWidth={1.75} />
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* PLATFORM PILLARS */}
+      <section className="section-pad bg-navy-gradient relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="container-max relative">
+          <SectionHeading
+            eyebrow="Platform"
+            title="Danışmanlıktan Dijital Akademiye Uzanan Tek Bir Ekosistem"
+            desc="Eğitim, danışmanlık, dijital araçlar, sertifikasyon ve yapay zekâ destekli karar desteğini tek çatı altında sunuyoruz — bireysel profesyonellerden kurumsal müşterilere kadar."
+          />
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {pillars.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.07}>
+                <Link href={p.href} className="card-premium h-full flex flex-col group">
+                  <div className="flex items-start justify-between">
+                    <p.icon size={24} className="text-gold-500" strokeWidth={1.5} />
+                    <ArrowUpRight
+                      size={16}
+                      className="text-gold-500 opacity-0 -translate-y-1 translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0"
+                    />
+                  </div>
+                  <h3 className="mt-5 text-base font-semibold text-white leading-snug">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2.5 text-xs text-white/50 leading-relaxed grow">{p.desc}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
