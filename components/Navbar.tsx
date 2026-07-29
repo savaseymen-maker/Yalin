@@ -28,17 +28,17 @@ export default function Navbar() {
       <div className="hidden md:block bg-navy-950 border-b border-white/[0.06]">
         <div className="container-max flex items-center justify-between px-6 md:px-12 lg:px-20 h-9 text-[12px]">
           <div className="flex items-center gap-6 text-white/50">
-            <a href="tel:+902120000000" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
+            <a href="tel:+902120000000" className="flex items-center gap-1.5 hover:text-ember-400 transition-colors">
               <Phone size={12} strokeWidth={1.75} /> +90 212 000 00 00
             </a>
             <a
               href="mailto:iletisim@yalin-consulting.com"
-              className="hidden lg:flex items-center gap-1.5 hover:text-gold-400 transition-colors"
+              className="hidden lg:flex items-center gap-1.5 hover:text-ember-400 transition-colors"
             >
               <Mail size={12} strokeWidth={1.75} /> iletisim@yalin-consulting.com
             </a>
           </div>
-          <Link href="/akademi" className="flex items-center gap-1.5 text-gold-400 hover:text-gold-300 transition-colors">
+          <Link href="/akademi" className="flex items-center gap-1.5 text-ember-400 hover:text-ember-300 transition-colors">
             <Download size={12} strokeWidth={1.75} /> Ücretsiz Örnek Modül İndirin
           </Link>
         </div>
@@ -50,8 +50,8 @@ export default function Navbar() {
       >
       <div className="container-max flex items-center justify-between px-6 md:px-12 lg:px-20 h-20">
         <Link href="/" className="flex items-baseline gap-2 group">
-          <span className="font-display text-2xl tracking-tight text-white">YALIN</span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-widest2 text-gold-500 mt-1">
+          <span className="font-display font-extrabold text-2xl tracking-tight text-white">YALIN</span>
+          <span className="hidden sm:inline text-[10px] uppercase tracking-widest2 text-ember-500 mt-1">
             Operasyonel Mükemmellik
           </span>
         </Link>
@@ -62,12 +62,12 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={`text-[13px] tracking-wide transition-colors duration-300 relative py-1 whitespace-nowrap ${
-                pathname === item.href ? "text-gold-400" : "text-white/70 hover:text-white"
+                pathname === item.href ? "text-ember-400" : "text-white/70 hover:text-white"
               }`}
             >
               {item.label}
               {pathname === item.href && (
-                <span className="absolute -bottom-1 left-0 right-0 h-px bg-gold-500" />
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-ember-500" />
               )}
             </Link>
           ))}
@@ -97,7 +97,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`py-3 text-base border-b border-white/[0.06] ${
-                  pathname === item.href ? "text-gold-400" : "text-white/80"
+                  pathname === item.href ? "text-ember-400" : "text-white/80"
                 }`}
               >
                 {item.label}
@@ -108,7 +108,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`py-3 text-sm border-b border-white/[0.06] ${
-                  pathname === item.href ? "text-gold-400" : "text-white/55"
+                  pathname === item.href ? "text-ember-400" : "text-white/55"
                 }`}
               >
                 {item.label}

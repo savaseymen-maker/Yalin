@@ -11,9 +11,10 @@ export default function CTASection({
   return (
     <section className="section-pad relative overflow-hidden bg-navy-gradient">
       <div className="absolute inset-0 bg-noise opacity-30" />
+      <div className="absolute top-0 right-0 h-72 w-72 rounded-full bg-ember-500/15 blur-3xl animate-float" />
       <div className="container-max relative px-0 text-center">
         <Reveal>
-          <h2 className="font-display text-balance mx-auto max-w-3xl text-3xl md:text-5xl leading-[1.15] text-white">
+          <h2 className="font-display font-extrabold text-balance mx-auto max-w-3xl text-3xl md:text-5xl leading-[1.15] text-white">
             {title}
           </h2>
         </Reveal>
@@ -25,7 +26,7 @@ export default function CTASection({
             <Link href="/randevu" className="btn-primary">
               İşletme Check-Up Talep Et
             </Link>
-            <Link href="/iletisim" className="btn-secondary">
+            <Link href="/iletisim" className="btn-secondary-dark">
               Ücretsiz Ön Görüşme
             </Link>
           </div>

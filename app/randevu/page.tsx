@@ -30,7 +30,7 @@ export default function BookCheckupPage() {
         desc="İşletme Check-Up, 14 kritik boyutta operasyonel olgunluğunuzu ölçen, saha gözlemi ve veri analizine dayanan kapsamlı bir teşhis sürecidir."
       />
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-paper-100">
         <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-14">
           <div className="lg:col-span-5">
             <SectionHeading
@@ -42,12 +42,12 @@ export default function BookCheckupPage() {
               {doctorStages.slice(0, 4).map((stage) => (
                 <Reveal key={stage.step}>
                   <div className="flex gap-4 items-start">
-                    <span className="font-display text-xl text-gold-500 w-8 shrink-0">
+                    <span className="font-display font-extrabold text-xl text-ember-500 w-8 shrink-0">
                       {stage.step}
                     </span>
                     <div>
-                      <h4 className="text-white font-semibold text-sm">{stage.title}</h4>
-                      <p className="text-white/45 text-sm mt-1 leading-relaxed">{stage.desc}</p>
+                      <h4 className="text-ink-900 font-semibold text-sm">{stage.title}</h4>
+                      <p className="text-ink-500 text-sm mt-1 leading-relaxed">{stage.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -55,14 +55,14 @@ export default function BookCheckupPage() {
             </div>
 
             <Reveal delay={0.1}>
-              <div className="mt-12 glass-panel rounded-sm p-7">
-                <p className="text-xs uppercase tracking-wider text-white/50 mb-4">
+              <div className="mt-12 glass-panel rounded-md p-7">
+                <p className="text-xs uppercase tracking-wider text-ink-500 mb-4">
                   Check-Up Kapsamı
                 </p>
                 <ul className="space-y-3">
                   {included.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-white/65">
-                      <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
+                    <li key={item} className="flex items-start gap-3 text-sm text-ink-700">
+                      <CheckCircle2 size={16} className="text-ember-500 mt-0.5 shrink-0" />
                       {item}
                     </li>
                   ))}

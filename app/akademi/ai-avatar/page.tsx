@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTASection from "@/components/CTASection";
+import { accentChip } from "@/lib/theme";
 import { avatarLanguages, avatarVideoLengths, avatarCapabilities, avatarQualityPoints } from "@/lib/data";
 import type { Metadata } from "next";
 
@@ -24,7 +25,7 @@ export default function AiAvatarAcademyPage() {
       />
 
       {/* LANGUAGES */}
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max">
           <SectionHeading
             eyebrow="İki Dil, Üç Aksan Seçeneği"
@@ -32,17 +33,22 @@ export default function AiAvatarAcademyPage() {
             desc="Aynı içerik, hedef kitleye göre farklı dil ve aksan seçenekleriyle üretilir."
           />
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
-            {avatarLanguages.map((lang, i) => (
-              <Reveal key={lang.title} delay={i * 0.08}>
-                <div className="card-premium h-full">
-                  <Languages size={22} className="text-gold-500" strokeWidth={1.5} />
-                  <h3 className="mt-4 text-base font-semibold text-white leading-snug">
-                    {lang.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/50 leading-relaxed">{lang.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+            {avatarLanguages.map((lang, i) => {
+              const chip = accentChip(i);
+              return (
+                <Reveal key={lang.title} delay={i * 0.08}>
+                  <div className="card-premium h-full">
+                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                      <Languages size={20} className={chip.text} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-ink-900 leading-snug">
+                      {lang.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-ink-500 leading-relaxed">{lang.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -52,6 +58,7 @@ export default function AiAvatarAcademyPage() {
         <div className="absolute inset-0 bg-noise opacity-30" />
         <div className="container-max relative">
           <SectionHeading
+            dark
             eyebrow="Esnek Format"
             title="Konuya Göre Ölçeklenen Video Süreleri"
             desc="Hızlı bir hatırlatmadan derinlemesine bir uzmanlık moduluna kadar, her içerik doğru uzunlukta tasarlanır."
@@ -59,9 +66,9 @@ export default function AiAvatarAcademyPage() {
           <div className="mt-16 flex flex-wrap gap-4">
             {avatarVideoLengths.map((len, i) => (
               <Reveal key={len} delay={i * 0.06}>
-                <div className="glass-panel rounded-full px-8 py-5 flex items-center gap-3">
-                  <Clock size={18} className="text-gold-500" strokeWidth={1.5} />
-                  <span className="font-display text-xl text-white">{len}</span>
+                <div className="glass-panel-dark rounded-full px-8 py-5 flex items-center gap-3 animate-float" style={{ animationDelay: `${i * 0.3}s` }}>
+                  <Clock size={18} className="text-ember-400" strokeWidth={1.5} />
+                  <span className="font-display font-bold text-xl text-white">{len}</span>
                 </div>
               </Reveal>
             ))}
@@ -70,7 +77,7 @@ export default function AiAvatarAcademyPage() {
       </section>
 
       {/* CAPABILITIES */}
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max">
           <SectionHeading
             eyebrow="Avatar Ne Yapar?"
@@ -79,14 +86,17 @@ export default function AiAvatarAcademyPage() {
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {avatarCapabilities.map((cap, i) => {
               const Icon = capabilityIcons[i % capabilityIcons.length];
+              const chip = accentChip(i);
               return (
                 <Reveal key={cap.title} delay={i * 0.07}>
                   <div className="card-premium h-full">
-                    <Icon size={22} className="text-gold-500" strokeWidth={1.5} />
-                    <h3 className="mt-4 text-base font-semibold text-white leading-snug">
+                    <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                      <Icon size={20} className={chip.text} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-ink-900 leading-snug">
                       {cap.title}
                     </h3>
-                    <p className="mt-2 text-sm text-white/50 leading-relaxed">{cap.desc}</p>
+                    <p className="mt-2 text-sm text-ink-500 leading-relaxed">{cap.desc}</p>
                   </div>
                 </Reveal>
               );
@@ -96,34 +106,36 @@ export default function AiAvatarAcademyPage() {
       </section>
 
       {/* QUALITY */}
-      <section className="section-pad bg-navy-gradient relative overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-30" />
-        <div className="container-max relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <section className="section-pad bg-paper-100">
+        <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow="Prodüksiyon Standardı"
               title="Stüdyo Kalitesinde Seslendirme, Tutarlı Marka Kimliği"
             />
             <Reveal delay={0.15}>
-              <div className="mt-8">
-                <Mic2 size={28} className="text-gold-500" strokeWidth={1.5} />
+              <div className="mt-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-ember-50 border border-ember-100">
+                <Mic2 size={26} className="text-ember-600" strokeWidth={1.5} />
               </div>
             </Reveal>
           </div>
           <div className="lg:col-span-7 space-y-5">
-            {avatarQualityPoints.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.08}>
-                <div className="flex gap-5 border-b border-white/10 pb-6">
-                  <span className="font-display text-2xl text-gold-500 shrink-0 w-10">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold text-white leading-snug">{p.title}</h3>
-                    <p className="mt-2 text-sm text-white/50 leading-relaxed">{p.desc}</p>
+            {avatarQualityPoints.map((p, i) => {
+              const chip = accentChip(i);
+              return (
+                <Reveal key={p.title} delay={i * 0.08}>
+                  <div className="flex gap-5 border-b border-ink-900/10 pb-6">
+                    <span className={`font-display font-extrabold text-2xl shrink-0 w-10 ${chip.text}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold text-ink-900 leading-snug">{p.title}</h3>
+                      <p className="mt-2 text-sm text-ink-600 leading-relaxed">{p.desc}</p>
+                    </div>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
