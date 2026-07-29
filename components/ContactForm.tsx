@@ -13,10 +13,10 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="glass-panel rounded-sm p-10 text-center">
-        <CheckCircle2 size={36} className="text-gold-500 mx-auto" strokeWidth={1.5} />
-        <h3 className="font-display text-xl text-white mt-5">Mesajınız İletildi</h3>
-        <p className="mt-2.5 text-white/55 text-sm leading-relaxed">
+      <div className="glass-panel rounded-md p-10 text-center">
+        <CheckCircle2 size={36} className="text-ember-500 mx-auto" strokeWidth={1.5} />
+        <h3 className="font-display font-extrabold text-xl text-ink-900 mt-5">Mesajınız İletildi</h3>
+        <p className="mt-2.5 text-ink-600 text-sm leading-relaxed">
           En kısa sürede sizinle iletişime geçeceğiz.
         </p>
       </div>
@@ -24,44 +24,44 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel rounded-sm p-8 md:p-10 space-y-6">
+    <form onSubmit={handleSubmit} className="glass-panel rounded-md p-8 md:p-10 space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">
+          <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">
             Ad Soyad
           </label>
           <input
             required
             name="name"
-            className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-colors focus:border-gold-500/60"
+            className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors focus:border-ember-500"
           />
         </div>
         <div>
-          <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">
+          <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">
             E-posta
           </label>
           <input
             required
             type="email"
             name="email"
-            className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-colors focus:border-gold-500/60"
+            className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors focus:border-ember-500"
           />
         </div>
       </div>
       <div>
-        <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Konu</label>
+        <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">Konu</label>
         <input
           name="subject"
-          className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-colors focus:border-gold-500/60"
+          className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors focus:border-ember-500"
         />
       </div>
       <div>
-        <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">Mesaj</label>
+        <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">Mesaj</label>
         <textarea
           required
           name="message"
           rows={5}
-          className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-colors focus:border-gold-500/60"
+          className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors focus:border-ember-500"
         />
       </div>
       <button type="submit" className="btn-primary w-full sm:w-auto">

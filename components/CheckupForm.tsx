@@ -26,10 +26,10 @@ export default function CheckupForm() {
 
   if (sent) {
     return (
-      <div className="glass-panel rounded-sm p-10 md:p-14 text-center">
-        <CheckCircle2 size={40} className="text-gold-500 mx-auto" strokeWidth={1.5} />
-        <h3 className="font-display text-2xl text-white mt-6">Talebiniz Alındı</h3>
-        <p className="mt-3 text-white/55 leading-relaxed max-w-md mx-auto">
+      <div className="glass-panel rounded-md p-10 md:p-14 text-center">
+        <CheckCircle2 size={40} className="text-ember-500 mx-auto" strokeWidth={1.5} />
+        <h3 className="font-display font-extrabold text-2xl text-ink-900 mt-6">Talebiniz Alındı</h3>
+        <p className="mt-3 text-ink-600 leading-relaxed max-w-md mx-auto">
           İşletme Check-Up talebiniz için teşekkür ederiz. Danışmanlarımız 1 iş günü içinde sizinle
           iletişime geçerek ön görüşme takvimini planlayacaktır.
         </p>
@@ -38,7 +38,7 @@ export default function CheckupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="glass-panel rounded-sm p-8 md:p-12 space-y-6">
+    <form onSubmit={handleSubmit} className="glass-panel rounded-md p-8 md:p-12 space-y-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Field label="Ad Soyad" name="name" required />
         <Field label="Şirket" name="company" required />
@@ -47,19 +47,17 @@ export default function CheckupForm() {
         <Field label="E-posta" name="email" type="email" required className="sm:col-span-2" />
 
         <div>
-          <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">
+          <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">
             Sektör
           </label>
           <select
             name="industry"
             required
-            className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white outline-none transition-colors focus:border-gold-500/60"
+            className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 outline-none transition-colors focus:border-ember-500"
           >
-            <option value="" className="bg-navy-900">
-              Sektör Seçin
-            </option>
+            <option value="">Sektör Seçin</option>
             {industries.map((ind) => (
-              <option key={ind} value={ind} className="bg-navy-900">
+              <option key={ind} value={ind}>
                 {ind}
               </option>
             ))}
@@ -70,14 +68,14 @@ export default function CheckupForm() {
       </div>
 
       <div>
-        <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">
+        <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">
           İşletmenizle İlgili Kısa Not
         </label>
         <textarea
           name="message"
           rows={4}
           placeholder="Öncelikli operasyonel sorununuzu kısaca aktarabilirsiniz."
-          className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-gold-500/60"
+          className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 placeholder:text-ink-400 outline-none transition-colors focus:border-ember-500"
         />
       </div>
 
@@ -105,16 +103,16 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="block text-xs uppercase tracking-wider text-white/50 mb-2">
+      <label className="block text-xs uppercase tracking-wider text-ink-500 mb-2">
         {label}
-        {required && <span className="text-gold-500"> *</span>}
+        {required && <span className="text-ember-500"> *</span>}
       </label>
       <input
         type={type}
         name={name}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-sm border border-white/15 bg-white/[0.03] px-4 py-3.5 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-gold-500/60"
+        className="w-full rounded-sm border border-ink-900/15 bg-white px-4 py-3.5 text-sm text-ink-900 placeholder:text-ink-400 outline-none transition-colors focus:border-ember-500"
       />
     </div>
   );

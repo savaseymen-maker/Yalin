@@ -35,6 +35,9 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ScoreBar from "@/components/ScoreBar";
 import CTASection from "@/components/CTASection";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import Marquee from "@/components/Marquee";
+import { accentChip } from "@/lib/theme";
 import {
   disciplines,
   hiddenCostAreas,
@@ -100,22 +103,28 @@ const hiddenCostIcons = [
 
 const doctorIcons = [Stethoscope, Search, FlaskConical, Activity, Pill, ShieldCheck, Eye];
 
+function parseStat(value: string) {
+  const match = value.match(/^([^\d]*)(\d+)([^\d]*)$/);
+  if (!match) return { prefix: "", number: 0, suffix: value };
+  return { prefix: match[1], number: Number(match[2]), suffix: match[3] };
+}
+
 export default function HomePage() {
   return (
     <>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-navy-gradient pt-28 md:pt-32">
         <div className="absolute inset-0 bg-noise opacity-40" />
-        <div className="absolute top-1/4 -right-40 h-[32rem] w-[32rem] rounded-full bg-gold-500/10 blur-3xl animate-float" />
-        <div className="absolute bottom-0 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl" />
+        <div className="absolute top-1/4 -right-40 h-[32rem] w-[32rem] rounded-full bg-ember-500/15 blur-3xl animate-float" />
+        <div className="absolute bottom-0 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl animate-pulse-glow" />
 
         <div className="container-max relative px-6 md:px-12 lg:px-20 py-16">
           <Reveal>
-            <p className="eyebrow mb-6">Operasyonel Mükemmellik Akademisi &amp; Danışmanlık</p>
+            <p className="eyebrow-invert mb-6">Operasyonel Mükemmellik Akademisi &amp; Danışmanlık</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="font-display text-balance max-w-5xl text-4xl sm:text-5xl md:text-7xl leading-[1.05] tracking-tight text-white">
-              İşletmenizdeki <span className="text-gold-500">Görünmeyen Maliyetleri</span> Ortaya
+            <h1 className="font-display font-extrabold text-balance max-w-5xl text-4xl sm:text-5xl md:text-7xl leading-[1.05] tracking-tight text-white">
+              İşletmenizdeki <span className="text-ember-400">Görünmeyen Maliyetleri</span> Ortaya
               Çıkarıyoruz.
             </h1>
           </Reveal>
@@ -131,7 +140,7 @@ export default function HomePage() {
               <Link href="/randevu" className="btn-primary">
                 İşletme Check-Up Talep Et <ArrowRight size={16} />
               </Link>
-              <Link href="/iletisim" className="btn-secondary">
+              <Link href="/iletisim" className="btn-secondary-dark">
                 Ücretsiz Ön Görüşme
               </Link>
             </div>
@@ -139,62 +148,71 @@ export default function HomePage() {
 
           <Reveal delay={0.3}>
             <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-white/10 pt-10 max-w-3xl">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <p className="font-display text-3xl md:text-4xl text-white">{s.value}</p>
-                  <p className="mt-1 text-xs md:text-sm text-white/45">{s.label}</p>
-                </div>
-              ))}
+              {stats.map((s) => {
+                const { prefix, number, suffix } = parseStat(s.value);
+                return (
+                  <div key={s.label}>
+                    <p className="font-display font-extrabold text-3xl md:text-4xl text-white">
+                      <AnimatedCounter value={number} prefix={prefix} suffix={suffix} />
+                    </p>
+                    <p className="mt-1 text-xs md:text-sm text-white/45">{s.label}</p>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* TRUST STRIP */}
-      <div className="relative border-y border-white/[0.06] bg-navy-950">
-        <div className="container-max flex flex-wrap items-center justify-center gap-x-10 gap-y-3 px-6 md:px-12 lg:px-20 py-5">
-          {trustStrip.map((item) => (
-            <span key={item} className="flex items-center gap-2 text-xs md:text-sm text-white/55">
-              <CheckCircle2 size={15} className="text-gold-500 shrink-0" strokeWidth={1.75} />
+      {/* TRUST STRIP — MARQUEE */}
+      <div className="relative border-y border-ink-900/[0.06] bg-white py-5">
+        <Marquee
+          items={trustStrip.map((item) => (
+            <span key={item} className="flex items-center gap-2 px-6 text-xs md:text-sm font-semibold text-ink-700">
+              <CheckCircle2 size={15} className="text-ember-500 shrink-0" strokeWidth={2} />
               {item}
             </span>
           ))}
-        </div>
+        />
       </div>
 
       {/* PLATFORM PILLARS */}
-      <section className="section-pad bg-navy-gradient relative overflow-hidden">
-        <div className="absolute inset-0 bg-noise opacity-30" />
-        <div className="container-max relative">
+      <section className="section-pad bg-paper-100">
+        <div className="container-max">
           <SectionHeading
             eyebrow="Platform"
             title="Danışmanlıktan Dijital Akademiye Uzanan Tek Bir Ekosistem"
             desc="Eğitim, danışmanlık, dijital araçlar, sertifikasyon ve yapay zekâ destekli karar desteğini tek çatı altında sunuyoruz — bireysel profesyonellerden kurumsal müşterilere kadar."
           />
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            {pillars.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.07}>
-                <Link href={p.href} className="card-premium h-full flex flex-col group">
-                  <div className="flex items-start justify-between">
-                    <p.icon size={24} className="text-gold-500" strokeWidth={1.5} />
-                    <ArrowUpRight
-                      size={16}
-                      className="text-gold-500 opacity-0 -translate-y-1 translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0"
-                    />
-                  </div>
-                  <h3 className="mt-5 text-base font-semibold text-white leading-snug">
-                    {p.title}
-                  </h3>
-                  <p className="mt-2.5 text-xs text-white/50 leading-relaxed grow">{p.desc}</p>
-                </Link>
-              </Reveal>
-            ))}
+            {pillars.map((p, i) => {
+              const chip = accentChip(i);
+              return (
+                <Reveal key={p.title} delay={i * 0.07}>
+                  <Link href={p.href} className="card-premium h-full flex flex-col group">
+                    <div className="flex items-start justify-between">
+                      <div className={`flex h-11 w-11 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                        <p.icon size={20} className={chip.text} strokeWidth={1.75} />
+                      </div>
+                      <ArrowUpRight
+                        size={16}
+                        className="text-ember-500 opacity-0 -translate-y-1 translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0"
+                      />
+                    </div>
+                    <h3 className="mt-5 text-base font-semibold text-ink-900 leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2.5 text-xs text-ink-600 leading-relaxed grow">{p.desc}</p>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* DISCIPLINES */}
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max">
           <SectionHeading
             eyebrow="Beş Disiplin, Tek Felsefe"
@@ -202,28 +220,33 @@ export default function HomePage() {
             desc="Operasyonel mükemmelliği tek bir metodolojiye indirgemiyoruz. Beş farklı disiplini bütünleşik bir yönetim felsefesi altında birleştirerek işletmenizin tüm yönlerini aynı anda teşhis ediyoruz."
           />
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {disciplines.map((d, i) => (
-              <Reveal key={d.key} delay={i * 0.06}>
-                <div className="card-premium h-full">
-                  <span className="font-display text-3xl text-gold-500">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-5 text-lg font-semibold text-white leading-snug">
-                    {d.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-white/50 leading-relaxed">{d.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+            {disciplines.map((d, i) => {
+              const chip = accentChip(i);
+              return (
+                <Reveal key={d.key} delay={i * 0.06}>
+                  <div className="card-premium h-full">
+                    <span className={`font-display font-extrabold text-3xl ${chip.text}`}>
+                      0{i + 1}
+                    </span>
+                    <h3 className="mt-5 text-lg font-semibold text-ink-900 leading-snug">
+                      {d.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-ink-600 leading-relaxed">{d.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* HIDDEN COST HUNTER */}
+      {/* HIDDEN COST HUNTER — dark accent band */}
       <section className="section-pad bg-navy-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="absolute top-10 left-1/4 h-72 w-72 rounded-full bg-ember-500/10 blur-3xl animate-float" />
         <div className="container-max relative">
           <SectionHeading
+            dark
             eyebrow="The Hidden Cost Hunter"
             title="Gizli Maliyetler, İşletmenizin Her Noktasında Saklanır"
             desc="Görünmeyen kayıplar tek bir departmanda yaşamaz. Üretimden yönetim kararlarına kadar uzanan on altı alanda sistematik olarak avlanır, ölçer ve ortaya çıkarırız."
@@ -233,8 +256,8 @@ export default function HomePage() {
               const Icon = hiddenCostIcons[i % hiddenCostIcons.length];
               return (
                 <Reveal key={area.title} delay={(i % 8) * 0.05}>
-                  <div className="glass-panel rounded-sm p-6 h-full transition-all duration-300 hover:border-gold-500/30">
-                    <Icon size={22} className="text-gold-500" strokeWidth={1.5} />
+                  <div className="card-premium-dark rounded-sm p-6 h-full">
+                    <Icon size={22} className="text-ember-400" strokeWidth={1.5} />
                     <h3 className="mt-4 text-base font-semibold text-white">{area.title}</h3>
                     <p className="mt-2 text-xs text-white/45 leading-relaxed">{area.desc}</p>
                   </div>
@@ -246,7 +269,7 @@ export default function HomePage() {
       </section>
 
       {/* İŞLETME DOKTORU */}
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-paper-100">
         <div className="container-max">
           <SectionHeading
             eyebrow="İşletme Doktoru"
@@ -256,19 +279,20 @@ export default function HomePage() {
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-7 gap-4">
             {doctorStages.map((stage, i) => {
               const Icon = doctorIcons[i];
+              const chip = accentChip(i);
               return (
                 <Reveal key={stage.step} delay={i * 0.06} className="lg:col-span-1">
                   <div className="card-premium h-full flex flex-col">
                     <div className="flex items-center justify-between">
-                      <span className="font-display text-2xl text-gold-500">{stage.step}</span>
-                      <Icon size={20} className="text-steel-400" strokeWidth={1.5} />
+                      <span className={`font-display font-extrabold text-2xl ${chip.text}`}>{stage.step}</span>
+                      <Icon size={20} className={chip.text} strokeWidth={1.5} />
                     </div>
-                    <h3 className="mt-5 text-base font-semibold text-white">{stage.title}</h3>
-                    <p className="text-[11px] uppercase tracking-wider text-white/35 mt-0.5">
+                    <h3 className="mt-5 text-base font-semibold text-ink-900">{stage.title}</h3>
+                    <p className="text-[11px] uppercase tracking-wider text-ink-400 mt-0.5">
                       {stage.subtitle}
                     </p>
-                    <p className="mt-3 text-xs text-white/50 leading-relaxed grow">{stage.desc}</p>
-                    <p className="mt-4 pt-4 border-t border-white/10 text-[11px] text-steel-400">
+                    <p className="mt-3 text-xs text-ink-600 leading-relaxed grow">{stage.desc}</p>
+                    <p className="mt-4 pt-4 border-t border-ink-900/10 text-[11px] text-steel-600">
                       {stage.mapping}
                     </p>
                   </div>
@@ -279,12 +303,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* İŞLETME CHECK-UP */}
+      {/* İŞLETME CHECK-UP — dark accent band */}
       <section className="section-pad bg-navy-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-30" />
         <div className="container-max relative grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-5">
             <SectionHeading
+              dark
               eyebrow="İşletme Check-Up"
               title="14 Kritik Boyutta Yönetim Olgunluğunuzu Ölçüyoruz"
               desc="Her kategori, sahadan toplanan veriler ve yönetim görüşmeleriyle 0-100 arası bir olgunluk skoruna dönüştürülür. Sonuç, yönetim kurulunuza sunulabilecek somut bir teşhis raporudur."
@@ -299,7 +324,7 @@ export default function HomePage() {
           </div>
           <div className="lg:col-span-7">
             <Reveal delay={0.1}>
-              <div className="glass-panel rounded-sm p-8 md:p-10">
+              <div className="glass-panel-dark rounded-sm p-8 md:p-10">
                 <p className="text-xs uppercase tracking-widest2 text-white/40 mb-2">
                   Örnek Değerlendirme Sonucu
                 </p>
@@ -315,7 +340,7 @@ export default function HomePage() {
       </section>
 
       {/* KURTULUŞ REÇETESİ */}
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max">
           <SectionHeading
             eyebrow="Kurtuluş Reçetesi"
@@ -323,17 +348,20 @@ export default function HomePage() {
             desc="Check-Up sonrasında işletmenize özel, önceliklendirilmiş ve finansal etkisi ölçülmüş bir aksiyon planı sunuyoruz."
           />
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {prescriptionItems.map((item, i) => (
-              <Reveal key={item.title} delay={(i % 5) * 0.06}>
-                <div className="card-premium h-full">
-                  <span className="font-display text-2xl text-gold-500">0{i + 1}</span>
-                  <h3 className="mt-4 text-base font-semibold text-white leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-xs text-white/50 leading-relaxed">{item.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+            {prescriptionItems.map((item, i) => {
+              const chip = accentChip(i);
+              return (
+                <Reveal key={item.title} delay={(i % 5) * 0.06}>
+                  <div className="card-premium h-full">
+                    <span className={`font-display font-extrabold text-2xl ${chip.text}`}>0{i + 1}</span>
+                    <h3 className="mt-4 text-base font-semibold text-ink-900 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-xs text-ink-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -343,11 +371,11 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-noise opacity-30" />
         <div className="container-max relative px-6 md:px-12 lg:px-20 text-center">
           <Reveal>
-            <p className="eyebrow mb-8">Felsefemiz</p>
+            <p className="eyebrow-invert mb-8">Felsefemiz</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="font-display text-balance mx-auto max-w-4xl text-3xl md:text-5xl leading-[1.2] text-white">
-              &ldquo;Teşhis edemediğiniz şeyi <span className="text-gold-500">iyileştiremezsiniz.</span>&rdquo;
+            <p className="font-display font-extrabold text-balance mx-auto max-w-4xl text-3xl md:text-5xl leading-[1.2] text-white">
+              &ldquo;Teşhis edemediğiniz şeyi <span className="text-ember-400">iyileştiremezsiniz.</span>&rdquo;
             </p>
           </Reveal>
         </div>

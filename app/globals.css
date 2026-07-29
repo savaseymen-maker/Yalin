@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Fraunces", serif;
+  --font-display: "Archivo", sans-serif;
   --font-sans: "Manrope", sans-serif;
 }
 
@@ -12,14 +12,14 @@ html {
 }
 
 body {
-  background-color: #08101f;
-  color: #eef1f6;
+  background-color: #f6f8fb;
+  color: #131f35;
   font-feature-settings: "ss01" on, "ss02" on;
 }
 
 ::selection {
-  background-color: #c9a227;
-  color: #050b18;
+  background-color: #f2670c;
+  color: #ffffff;
 }
 
 /* Scrollbar */
@@ -27,31 +27,49 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a1428;
+  background: #eef1f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2c3138;
+  background: #c7cedb;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9a227;
+  background: #f2670c;
 }
 
 @layer components {
+  /* Light surfaces (default — used across content sections) */
   .glass-panel {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08];
+    @apply bg-white/90 backdrop-blur-xl border border-ink-900/[0.08] shadow-soft;
+  }
+
+  .card-premium {
+    @apply relative rounded-md border border-ink-900/[0.08] bg-white p-8 shadow-soft transition-all duration-300 hover:border-ember-500/40 hover:shadow-soft-lg hover:-translate-y-1;
+  }
+
+  /* Dark surfaces (used inside navy accent bands: Hero, PageHero, CTA, Navbar, Footer) */
+  .glass-panel-dark {
+    @apply bg-white/[0.06] backdrop-blur-xl border border-white/[0.1];
+  }
+
+  .card-premium-dark {
+    @apply relative rounded-md border border-white/[0.1] bg-white/[0.04] backdrop-blur-sm p-8 transition-all duration-300 hover:border-ember-500/40 hover:bg-white/[0.07] hover:-translate-y-1;
   }
 
   .glass-nav {
-    @apply bg-navy-950/70 backdrop-blur-xl border-b border-white/[0.06];
+    @apply bg-navy-950/85 backdrop-blur-xl border-b border-white/[0.08];
   }
 
   .gold-divider {
-    @apply h-px w-16 bg-gold-500;
+    @apply h-1 w-16 rounded-full bg-ember-500;
   }
 
   .eyebrow {
-    @apply text-xs md:text-sm uppercase tracking-widest2 text-gold-500 font-semibold;
+    @apply text-xs md:text-sm uppercase tracking-widest2 text-ember-600 font-bold;
+  }
+
+  .eyebrow-invert {
+    @apply text-xs md:text-sm uppercase tracking-widest2 text-ember-400 font-bold;
   }
 
   .section-pad {
@@ -63,15 +81,15 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-gold-500 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-navy-950 transition-all duration-300 hover:bg-gold-400 hover:shadow-[0_0_30px_rgba(201,162,39,0.35)];
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-ember-500 px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-ember-600 hover:shadow-[0_8px_30px_rgba(242,103,12,0.4)] hover:-translate-y-0.5;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-white/20 bg-white/[0.03] px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-gold-500/60 hover:text-gold-400;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-ink-900/15 bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-ink-900 transition-all duration-300 hover:border-ember-500 hover:text-ember-600 hover:-translate-y-0.5;
   }
 
-  .card-premium {
-    @apply relative rounded-sm border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm p-8 transition-all duration-500 hover:border-gold-500/30 hover:bg-white/[0.05] hover:-translate-y-1;
+  .btn-secondary-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-white/25 bg-white/[0.04] px-8 py-4 text-sm font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all duration-300 hover:border-ember-400 hover:text-ember-300 hover:-translate-y-0.5;
   }
 }
 
@@ -80,7 +98,14 @@ body {
     text-wrap: balance;
   }
   .bg-noise {
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
     background-size: 24px 24px;
+  }
+  .bg-noise-light {
+    background-image: radial-gradient(circle at 1px 1px, rgba(11,21,38,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
   }
 }

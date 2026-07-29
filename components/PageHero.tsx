@@ -12,14 +12,14 @@ export default function PageHero({
   return (
     <section className="relative overflow-hidden bg-navy-gradient pt-40 pb-24 md:pt-48 md:pb-28">
       <div className="absolute inset-0 bg-noise opacity-40" />
-      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl" />
+      <div className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-ember-500/15 blur-3xl animate-float" />
+      <div className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-steel-500/10 blur-3xl animate-pulse-glow" />
       <div className="container-max relative px-6 md:px-12 lg:px-20">
         <Reveal>
-          <p className="eyebrow mb-5">{eyebrow}</p>
+          <p className="eyebrow-invert mb-5">{eyebrow}</p>
         </Reveal>
         <Reveal delay={0.05}>
-          <h1 className="font-display text-balance max-w-4xl text-4xl md:text-6xl leading-[1.08] tracking-tight text-white">
+          <h1 className="font-display font-extrabold text-balance max-w-4xl text-4xl md:text-6xl leading-[1.05] tracking-tight text-white">
             {title}
           </h1>
         </Reveal>

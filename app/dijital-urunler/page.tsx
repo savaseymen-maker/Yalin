@@ -12,6 +12,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTASection from "@/components/CTASection";
+import { accentChip } from "@/lib/theme";
 import { digitalProducts, digitalProductCategories } from "@/lib/data";
 import type { Metadata } from "next";
 
@@ -47,22 +48,25 @@ export default function DigitalProductsPage() {
       />
 
       {/* CATEGORY QUICK-NAV */}
-      <section className="bg-charcoal-900 border-b border-white/[0.06] py-10">
+      <section className="bg-white border-b border-ink-900/[0.06] py-10">
         <div className="container-max px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {digitalProductCategories.map((cat, i) => {
               const Icon = categoryIcons[i % categoryIcons.length];
+              const chip = accentChip(i);
               return (
                 <a
                   key={cat.title}
                   href={`#${slugify(cat.title)}`}
-                  className="flex flex-col items-center text-center gap-3 rounded-sm border border-white/[0.08] bg-white/[0.02] px-4 py-6 transition-all duration-300 hover:border-gold-500/30 hover:bg-white/[0.04]"
+                  className="flex flex-col items-center text-center gap-3 rounded-md border border-ink-900/[0.08] bg-paper-100 px-4 py-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft hover:border-ember-300"
                 >
-                  <Icon size={22} className="text-gold-500" strokeWidth={1.5} />
-                  <span className="text-xs md:text-[13px] text-white/70 leading-snug">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                    <Icon size={20} className={chip.text} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-xs md:text-[13px] text-ink-800 font-medium leading-snug">
                     {cat.title}
                   </span>
-                  <span className="text-[11px] text-white/35">{cat.items.length} ürün</span>
+                  <span className="text-[11px] text-ink-400">{cat.items.length} ürün</span>
                 </a>
               );
             })}
@@ -72,29 +76,31 @@ export default function DigitalProductsPage() {
 
       {digitalProductCategories.map((cat, gi) => {
         const items = digitalProducts.filter((p) => cat.items.includes(p.title));
+        const chip = accentChip(gi);
         return (
           <section
             key={cat.title}
             id={slugify(cat.title)}
-            className={`section-pad scroll-mt-28 ${gi % 2 === 0 ? "bg-navy-gradient relative overflow-hidden" : "bg-charcoal-900"}`}
+            className={`section-pad scroll-mt-28 ${gi % 2 === 0 ? "bg-paper-100" : "bg-white"}`}
           >
-            {gi % 2 === 0 && <div className="absolute inset-0 bg-noise opacity-30" />}
-            <div className="container-max relative">
+            <div className="container-max">
               <SectionHeading eyebrow={`0${gi + 1}`} title={cat.title} />
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {items.map((p, i) => (
                   <Reveal key={p.title} delay={(i % 9) * 0.05}>
                     <div className="card-premium h-full group">
                       <div className="flex items-start justify-between">
-                        <ShoppingBag size={20} className="text-gold-500" strokeWidth={1.5} />
-                        <span className="font-display text-lg text-white/20">
+                        <div className={`flex h-10 w-10 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                          <ShoppingBag size={18} className={chip.text} strokeWidth={1.5} />
+                        </div>
+                        <span className="font-display font-extrabold text-lg text-ink-900/10">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                       </div>
-                      <h3 className="mt-4 text-base font-semibold text-white leading-snug">
+                      <h3 className="mt-4 text-base font-semibold text-ink-900 leading-snug">
                         {p.title}
                       </h3>
-                      <p className="mt-2 text-sm text-white/50 leading-relaxed">{p.desc}</p>
+                      <p className="mt-2 text-sm text-ink-500 leading-relaxed">{p.desc}</p>
                     </div>
                   </Reveal>
                 ))}
@@ -104,10 +110,12 @@ export default function DigitalProductsPage() {
         );
       })}
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-navy-gradient relative overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-30" />
         <div className="container-max relative grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           <div className="lg:col-span-7">
             <SectionHeading
+              dark
               eyebrow="Nasıl Çalışır?"
               title="Tekil Modülden Kurumsal Lisansa Kadar Esnek Erişim"
               desc="Bireysel profesyoneller tekil ürünleri satın alabilir; kurumlar ise yıllık akademi lisansıyla tüm kütüphaneye ekip genelinde erişim sağlayabilir."
@@ -115,7 +123,7 @@ export default function DigitalProductsPage() {
           </div>
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="glass-panel rounded-sm p-8 md:p-10">
+              <div className="glass-panel-dark rounded-sm p-8 md:p-10">
                 <p className="text-xs uppercase tracking-widest2 text-white/40 mb-4">
                   Erişim Seçenekleri
                 </p>

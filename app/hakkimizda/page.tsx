@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTASection from "@/components/CTASection";
+import { accentChip } from "@/lib/theme";
 import { disciplines, roadmapPhases } from "@/lib/data";
 import type { Metadata } from "next";
 
@@ -44,7 +45,7 @@ export default function AboutPage() {
         desc="Biz geleneksel bir Yalın danışmanlığı değiliz. Beş farklı yönetim disiplinini tek bir teşhis ve tedavi felsefesi altında birleştiren stratejik bir operasyonel mükemmellik firmasıyız."
       />
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <div className="lg:col-span-6">
             <SectionHeading
@@ -52,7 +53,7 @@ export default function AboutPage() {
               title="Teşhis Edemediğiniz Şeyi İyileştiremezsiniz"
             />
             <Reveal delay={0.1}>
-              <div className="mt-8 space-y-5 text-white/60 leading-relaxed text-base">
+              <div className="mt-8 space-y-5 text-ink-600 leading-relaxed text-base">
                 <p>
                   Çoğu danışmanlık firması, doğrudan çözümle işe başlar. Biz tam tersini yapıyoruz:
                   önce belirtileri dinler, sonra veriyi analiz eder, ancak kök neden doğrulandıktan
@@ -73,15 +74,20 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {principles.map((p, i) => (
-                <Reveal key={p.title} delay={i * 0.08}>
-                  <div className="card-premium h-full">
-                    <p.icon size={24} className="text-gold-500" strokeWidth={1.5} />
-                    <h3 className="mt-5 text-base font-semibold text-white">{p.title}</h3>
-                    <p className="mt-2.5 text-sm text-white/50 leading-relaxed">{p.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
+              {principles.map((p, i) => {
+                const chip = accentChip(i);
+                return (
+                  <Reveal key={p.title} delay={i * 0.08}>
+                    <div className="card-premium h-full">
+                      <div className={`inline-flex h-11 w-11 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                        <p.icon size={20} className={chip.text} strokeWidth={1.5} />
+                      </div>
+                      <h3 className="mt-5 text-base font-semibold text-ink-900">{p.title}</h3>
+                      <p className="mt-2.5 text-sm text-ink-500 leading-relaxed">{p.desc}</p>
+                    </div>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -91,6 +97,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-noise opacity-30" />
         <div className="container-max relative">
           <SectionHeading
+            dark
             eyebrow="Entegre Model"
             title="Beş Disiplin, Tek Yönetim Felsefesi"
             desc="Bu beş disiplini birbirinden bağımsız hizmetler olarak değil, birbirini besleyen tek bir teşhis-tedavi sistemi olarak uyguluyoruz."
@@ -99,7 +106,7 @@ export default function AboutPage() {
             {disciplines.map((d, i) => (
               <Reveal key={d.key} delay={i * 0.06} className="h-full">
                 <div className="bg-navy-900 h-full p-8">
-                  <span className="font-display text-2xl text-gold-500">0{i + 1}</span>
+                  <span className="font-display font-extrabold text-2xl text-ember-400">0{i + 1}</span>
                   <h3 className="mt-5 text-base font-semibold text-white leading-snug">
                     {d.title}
                   </h3>
@@ -111,15 +118,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-white">
         <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <Reveal>
-            <div className="glass-panel rounded-sm p-10 md:p-14">
-              <Award size={30} className="text-gold-500" strokeWidth={1.5} />
-              <h3 className="font-display text-2xl md:text-3xl text-white mt-6 leading-snug">
+            <div className="glass-panel rounded-md p-10 md:p-14 !bg-paper-100">
+              <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-ember-50 border border-ember-100">
+                <Award size={26} className="text-ember-600" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-display font-extrabold text-2xl md:text-3xl text-ink-900 mt-6 leading-snug">
                 Yönetim Kurullarının Güvendiği Danışman
               </h3>
-              <p className="mt-5 text-white/55 leading-relaxed">
+              <p className="mt-5 text-ink-600 leading-relaxed">
                 CEO&apos;lar, Fabrika Müdürleri, COO&apos;lar ve Yönetim Kurulları ile doğrudan
                 çalışıyor; teknik bulguları stratejik kararlara dönüştürüyoruz. Raporlarımız saha
                 dilinde değil, yönetim kurulu dilinde konuşur.
@@ -136,7 +145,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-paper-100">
         <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-5">
             <SectionHeading
@@ -144,7 +153,7 @@ export default function AboutPage() {
               title="20 Yıllık Saha Deneyimini Ölçeklenebilir Bir Platforma Dönüştürüyoruz"
             />
             <Reveal delay={0.12}>
-              <div className="mt-8 space-y-5 text-white/60 leading-relaxed text-base">
+              <div className="mt-8 space-y-5 text-ink-600 leading-relaxed text-base">
                 <p>
                   Piyasada birçok kişi yalın üretim araçlarını anlatıyor. Bizim farkımız, bunları
                   yalnızca teorik olarak değil; yıllara dayanan üretim deneyimi, gerçek fabrika
@@ -160,17 +169,17 @@ export default function AboutPage() {
             </Reveal>
           </div>
           <div className="lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10 rounded-sm overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-ink-900/10 rounded-sm overflow-hidden">
               {roadmapPhases.map((phase, i) => (
                 <Reveal key={phase.phase} delay={i * 0.08} className="h-full">
-                  <div className="bg-navy-900 h-full p-8">
-                    <p className="text-[11px] uppercase tracking-widest2 text-gold-500">
+                  <div className="bg-white h-full p-8">
+                    <p className="text-[11px] uppercase tracking-widest2 text-ember-600 font-bold">
                       {phase.phase} · {phase.period}
                     </p>
-                    <h3 className="mt-3 text-lg font-semibold text-white leading-snug">
+                    <h3 className="mt-3 text-lg font-semibold text-ink-900 leading-snug">
                       {phase.title}
                     </h3>
-                    <p className="mt-3 text-sm text-white/50 leading-relaxed">{phase.desc}</p>
+                    <p className="mt-3 text-sm text-ink-500 leading-relaxed">{phase.desc}</p>
                   </div>
                 </Reveal>
               ))}

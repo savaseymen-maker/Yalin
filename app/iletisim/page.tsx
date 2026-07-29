@@ -2,6 +2,7 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import { accentChip } from "@/lib/theme";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,29 +26,34 @@ export default function ContactPage() {
         desc="Sorularınız veya İşletme Check-Up talebiniz için bize ulaşın. 1 iş günü içinde geri dönüş yapıyoruz."
       />
 
-      <section className="section-pad bg-charcoal-900">
+      <section className="section-pad bg-paper-100">
         <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-14">
           <div className="lg:col-span-5">
             <div className="space-y-5">
-              {info.map((item, i) => (
-                <Reveal key={item.label} delay={i * 0.06}>
-                  <div className="glass-panel rounded-sm p-6 flex items-start gap-4">
-                    <item.icon size={20} className="text-gold-500 mt-0.5 shrink-0" strokeWidth={1.5} />
-                    <div>
-                      <p className="text-xs uppercase tracking-wider text-white/40">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-white/85">{item.value}</p>
+              {info.map((item, i) => {
+                const chip = accentChip(i);
+                return (
+                  <Reveal key={item.label} delay={i * 0.06}>
+                    <div className="glass-panel rounded-md p-6 flex items-start gap-4">
+                      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border ${chip.bg} ${chip.border}`}>
+                        <item.icon size={18} className={chip.text} strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-wider text-ink-400">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-ink-800 font-medium">{item.value}</p>
+                      </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                );
+              })}
             </div>
 
             <Reveal delay={0.3}>
-              <div className="mt-6 rounded-sm overflow-hidden border border-white/10 h-56 relative bg-navy-800 flex items-center justify-center">
+              <div className="mt-6 rounded-md overflow-hidden border border-ink-900/10 h-56 relative bg-navy-800 flex items-center justify-center">
                 <div className="absolute inset-0 bg-noise opacity-30" />
-                <p className="relative text-white/30 text-sm">İstanbul, Levent — Harita Görünümü</p>
+                <p className="relative text-white/40 text-sm">İstanbul, Levent — Harita Görünümü</p>
               </div>
             </Reveal>
           </div>

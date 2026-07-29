@@ -16,6 +16,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTASection from "@/components/CTASection";
+import { accentChipDark } from "@/lib/theme";
 import {
   productionLineKpis,
   productionLineStations,
@@ -44,13 +45,13 @@ const kpiIcons: Record<string, typeof Gauge> = {
 
 const statusStyles: Record<string, { color: string; label: string; ring: string }> = {
   ok: { color: "#7FA6C9", label: "Çalışıyor", ring: "ring-steel-400/40" },
-  warning: { color: "#C9A227", label: "Yavaşlama", ring: "ring-gold-500/40" },
+  warning: { color: "#F2670C", label: "Yavaşlama", ring: "ring-ember-500/40" },
   stopped: { color: "#B45757", label: "Durdu", ring: "ring-[#B45757]/40" },
 };
 
 const severityStyles: Record<string, { color: string; icon: typeof AlertTriangle }> = {
   critical: { color: "#B45757", icon: XCircle },
-  warning: { color: "#C9A227", icon: AlertTriangle },
+  warning: { color: "#F2670C", icon: AlertTriangle },
   info: { color: "#7FA6C9", icon: Info },
 };
 
@@ -86,14 +87,15 @@ export default function ProductionLineDashboardPage() {
         <div className="container-max">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <SectionHeading
+              dark
               eyebrow="Hat A · Vardiya 2"
               title="Temel Performans Göstergeleri"
               desc="Hedefe karşı gerçekleşen değerler ve önceki vardiyaya göre değişim."
             />
             <div className="flex items-center gap-2 text-xs uppercase tracking-widest2 text-white/40 pb-2">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-500 opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-gold-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ember-500 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-ember-500" />
               </span>
               Örnek Veri
             </div>
@@ -105,9 +107,9 @@ export default function ProductionLineDashboardPage() {
               const good = kpi.invert ? kpi.delta <= 0 : kpi.delta >= 0;
               return (
                 <Reveal key={kpi.key} delay={i * 0.05}>
-                  <div className="card-premium h-full">
+                  <div className="card-premium-dark rounded-sm h-full">
                     <div className="flex items-start justify-between">
-                      <Icon size={20} className="text-gold-500" strokeWidth={1.5} />
+                      <Icon size={20} className={accentChipDark(i)} strokeWidth={1.5} />
                       <span
                         className={`flex items-center gap-1 text-xs font-medium ${
                           good ? "text-steel-400" : "text-[#C97A7A]"
@@ -118,7 +120,7 @@ export default function ProductionLineDashboardPage() {
                         {kpi.delta}
                       </span>
                     </div>
-                    <p className="mt-5 font-display text-3xl text-white">
+                    <p className="mt-5 font-display font-extrabold text-3xl text-white">
                       {kpi.value}
                       <span className="text-base text-white/40 ml-1">{kpi.unit}</span>
                     </p>
@@ -137,15 +139,17 @@ export default function ProductionLineDashboardPage() {
       {/* PRODUCTION LINE FLOW */}
       <section className="section-pad bg-navy-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-ember-500/10 blur-3xl animate-float" />
         <div className="container-max relative">
           <SectionHeading
+            dark
             eyebrow="Hat Akışı"
             title="İstasyon Bazında Anlık Durum"
             desc="Her istasyonun çalışma durumu ve saatlik çıktısı, sahadaki anormalliği yönetim toplantısını beklemeden görünür kılar."
           />
 
           <Reveal delay={0.1}>
-            <div className="mt-14 glass-panel rounded-sm p-6 md:p-10 overflow-x-auto">
+            <div className="mt-14 glass-panel-dark rounded-sm p-6 md:p-10 overflow-x-auto">
               <div className="flex items-stretch gap-0 min-w-[900px]">
                 {productionLineStations.map((station, i) => {
                   const style = statusStyles[station.status];
@@ -167,7 +171,7 @@ export default function ProductionLineDashboardPage() {
                           <h3 className="mt-4 text-sm font-semibold text-white leading-snug">
                             {station.name}
                           </h3>
-                          <p className="mt-2 font-display text-2xl text-white">
+                          <p className="mt-2 font-display font-extrabold text-2xl text-white">
                             {station.throughput}
                             <span className="text-sm text-white/40 ml-1">adet/sa</span>
                           </p>
@@ -191,9 +195,9 @@ export default function ProductionLineDashboardPage() {
       <section className="section-pad bg-charcoal-900">
         <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Reveal>
-            <div className="glass-panel rounded-sm p-8 h-full">
-              <p className="eyebrow mb-2">Trend</p>
-              <h3 className="font-display text-2xl text-white">Son 12 Vardiyada OEE</h3>
+            <div className="glass-panel-dark rounded-sm p-8 h-full">
+              <p className="eyebrow-invert mb-2">Trend</p>
+              <h3 className="font-display font-extrabold text-2xl text-white">Son 12 Vardiyada OEE</h3>
               <p className="mt-2 text-sm text-white/50">
                 Kaizen döngülerinin etkisiyle OEE&apos;de kademeli iyileşme eğilimi.
               </p>
@@ -206,14 +210,14 @@ export default function ProductionLineDashboardPage() {
               >
                 <defs>
                   <linearGradient id="oeeArea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C9A227" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#C9A227" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#F2670C" stopOpacity="0.35" />
+                    <stop offset="100%" stopColor="#F2670C" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <path d={spark.area} fill="url(#oeeArea)" />
-                <path d={spark.line} fill="none" stroke="#C9A227" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d={spark.line} fill="none" stroke="#F2670C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 {spark.points.map(([x, y], i) => (
-                  <circle key={i} cx={x} cy={y} r={i === spark.points.length - 1 ? 4 : 2.5} fill="#C9A227" />
+                  <circle key={i} cx={x} cy={y} r={i === spark.points.length - 1 ? 4 : 2.5} fill="#F2670C" />
                 ))}
               </svg>
               <div className="flex items-center justify-between text-[11px] text-white/35 mt-1">
@@ -224,9 +228,9 @@ export default function ProductionLineDashboardPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="glass-panel rounded-sm p-8 h-full">
-              <p className="eyebrow mb-2">Pareto Analizi</p>
-              <h3 className="font-display text-2xl text-white">Duruş Nedenleri (dk/hafta)</h3>
+            <div className="glass-panel-dark rounded-sm p-8 h-full">
+              <p className="eyebrow-invert mb-2">Pareto Analizi</p>
+              <h3 className="font-display font-extrabold text-2xl text-white">Duruş Nedenleri (dk/hafta)</h3>
               <p className="mt-2 text-sm text-white/50">
                 En büyük kayıp kaynağı reaktif bakımdan geliyor — TPM önceliği burada.
               </p>
@@ -239,7 +243,7 @@ export default function ProductionLineDashboardPage() {
                     </div>
                     <div className="h-1.5 w-full rounded-full bg-white/[0.06] overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-gold-500"
+                        className="h-full rounded-full bg-ember-500"
                         style={{ width: `${(d.minutes / maxDowntime) * 100}%` }}
                       />
                     </div>
@@ -254,14 +258,16 @@ export default function ProductionLineDashboardPage() {
       {/* ALERTS FEED */}
       <section className="section-pad bg-navy-gradient relative overflow-hidden">
         <div className="absolute inset-0 bg-noise opacity-30" />
+        <div className="absolute bottom-0 left-10 h-64 w-64 rounded-full bg-steel-500/10 blur-3xl animate-pulse-glow" />
         <div className="container-max relative">
           <SectionHeading
+            dark
             eyebrow="Erken Uyarı"
             title="Anormallik Akışı"
             desc="Görsel yönetim ilkesi gereği, sapmalar raporlanmayı beklemeden ekranda görünür hale gelir."
           />
           <Reveal delay={0.1}>
-            <div className="mt-14 glass-panel rounded-sm divide-y divide-white/[0.07]">
+            <div className="mt-14 glass-panel-dark rounded-sm divide-y divide-white/[0.07]">
               {productionLineAlerts.map((alert) => {
                 const s = severityStyles[alert.severity];
                 const Icon = s.icon;
