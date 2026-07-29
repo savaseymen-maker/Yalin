@@ -18,6 +18,7 @@ export const moreLinks = [
   { href: "/sektorler", label: "Sektörler" },
   { href: "/akademi/ai-avatar", label: "AI Avatar Akademisi" },
   { href: "/uretim-hatti-paneli", label: "Üretim Panosu" },
+  { href: "/magaza", label: "Mağaza" },
 ];
 
 export const disciplines = [
@@ -752,5 +753,148 @@ export const roadmapPhases = [
     period: "12–18 Ay",
     title: "Yapay Zekâ Platformu",
     desc: "Eğitilmiş operasyon asistanı, şirket dokümanlarıyla çalışan bilgi tabanı, çok dilli içerik ve uluslararası pazarlama.",
+  },
+];
+
+// ------------------------------------------------------------------
+// Mağaza — Yalın & 5S Ürünleri, Güvenlik İşaret/Levhaları, Etiketler
+// ------------------------------------------------------------------
+export const shopCategories = [
+  {
+    key: "yalin-5s",
+    title: "Yalın & 5S Ürünleri",
+    desc: "Görsel yönetim, saha standardizasyonu ve akış disiplinini destekleyen 5S ekipmanları.",
+  },
+  {
+    key: "guvenlik-levha",
+    title: "Güvenlik İşaret ve Levhaları",
+    desc: "Uyarı, yasaklama, zorunluluk ve acil durum levhaları — fotoluminesan ve dayanıklı malzeme seçenekleriyle.",
+  },
+  {
+    key: "etiket",
+    title: "Etiketler",
+    desc: "Ekipman, boru hattı, zemin ve pano etiketleme için endüstriyel dayanıklılıkta çözümler.",
+  },
+];
+
+export const shopProducts = [
+  // Yalın & 5S Ürünleri
+  {
+    slug: "zemin-isaretleme-bandi",
+    category: "yalin-5s",
+    title: "Zemin İşaretleme Bandı",
+    desc: "Aşınmaya dayanıklı PVC esaslı, çok renk seçenekli saha ve koridor sınırlandırma bandı.",
+    price: 249,
+    unit: "rulo (33 m)",
+    badge: "Çok Satan",
+  },
+  {
+    slug: "golge-panosu",
+    category: "yalin-5s",
+    title: "Gölge Panosu (Shadow Board)",
+    desc: "El aletleri için özel kesim, kayıp ve eksik takım tespitini kolaylaştıran gölge yerleşim panosu.",
+    price: 1450,
+    unit: "adet",
+  },
+  {
+    slug: "manyetik-kanban-tahtasi",
+    category: "yalin-5s",
+    title: "Manyetik Kanban Tahtası",
+    desc: "Üretim planlama ve akış yönetimi için manyetik kartlı, bölmeli kanban panosu.",
+    price: 1890,
+    unit: "adet",
+  },
+  {
+    slug: "5s-denetim-panosu",
+    category: "yalin-5s",
+    title: "5S Denetim ve Puanlama Panosu",
+    desc: "Sahada haftalık 5S denetim sonuçlarının görsel yönetimle takip edildiği pano.",
+    price: 980,
+    unit: "adet",
+  },
+  {
+    slug: "andon-isik-sutunu",
+    category: "yalin-5s",
+    title: "Andon Işıklı Uyarı Sütunu",
+    desc: "Hat durumunu (çalışıyor / yavaşlama / durdu) uzaktan görünür kılan 3 renkli LED sinyal sütunu.",
+    price: 1250,
+    unit: "adet",
+    badge: "Yeni",
+  },
+  // Güvenlik İşaret ve Levhaları
+  {
+    slug: "yangin-sondurucu-levhasi",
+    category: "guvenlik-levha",
+    title: "Yangın Söndürücü Yönlendirme Levhası",
+    desc: "Fotoluminesan, gece görünürlüklü acil durum ekipmanı yönlendirme levhası.",
+    price: 95,
+    unit: "adet",
+  },
+  {
+    slug: "kkd-zorunluluk-seti",
+    category: "guvenlik-levha",
+    title: "KKD Zorunluluk Levhası Seti",
+    desc: "Baret, koruyucu gözlük, eldiven ve kulaklık zorunluluğu uyarı seti (4 levha).",
+    price: 320,
+    unit: "set",
+  },
+  {
+    slug: "genel-tehlike-levhasi",
+    category: "guvenlik-levha",
+    title: "Genel Tehlike Uyarı Levhası",
+    desc: "Sarı zemin, yüksek görünürlüklü, alüminyum kaplama tehlike uyarı levhası.",
+    price: 140,
+    unit: "adet",
+    badge: "Çok Satan",
+  },
+  {
+    slug: "acil-toplanma-levhasi",
+    category: "guvenlik-levha",
+    title: "Acil Toplanma Noktası Levhası",
+    desc: "Fotoluminesan, tüm hava koşullarına dayanıklı toplanma alanı yönlendirme levhası.",
+    price: 165,
+    unit: "adet",
+  },
+  {
+    slug: "forklift-trafik-seti",
+    category: "guvenlik-levha",
+    title: "Forklift & Yaya Trafik Levhası Seti",
+    desc: "Depo içi araç-yaya ayrımını netleştiren yönlendirme ve uyarı levhası seti.",
+    price: 410,
+    unit: "set",
+  },
+  // Etiketler
+  {
+    slug: "boru-hatti-etiketi",
+    category: "etiket",
+    title: "Boru Hattı Yönlendirme Etiketi",
+    desc: "Uluslararası renk koduna uygun akışkan tanımlama ve akış yönü etiketi.",
+    price: 18,
+    unit: "adet",
+    badge: "Toplu Alımda İndirim",
+  },
+  {
+    slug: "ekipman-envanter-etiketi",
+    category: "etiket",
+    title: "Ekipman Envanter / Bakım Etiketi",
+    desc: "Dayanıklı polyester malzeme, seri numaralı ekipman takip ve bakım etiketi.",
+    price: 12,
+    unit: "adet",
+  },
+  {
+    slug: "zemin-lokasyon-etiketi",
+    category: "etiket",
+    title: "Zemin Lokasyon Etiketi",
+    desc: "Depo raf, zemin ve konum tanımlama için dayanıklı zemin etiketi.",
+    price: 9,
+    unit: "adet",
+  },
+  {
+    slug: "elektrik-panosu-etiketi",
+    category: "etiket",
+    title: "Elektrik Panosu Uyarı Etiketi",
+    desc: "Yüksek gerilim ve ark patlaması (arc flash) uyarı etiketi, dayanıklı vinil malzeme.",
+    price: 22,
+    unit: "adet",
   },
 ];
