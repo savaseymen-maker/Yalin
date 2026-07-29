@@ -3,7 +3,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import CTASection from "@/components/CTASection";
-import { disciplines } from "@/lib/data";
+import { disciplines, roadmapPhases } from "@/lib/data";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -132,6 +132,49 @@ export default function AboutPage() {
               title="Üst Yönetim İçin Tasarlanmış Bir Danışmanlık Deneyimi"
               desc="Sahadan topladığımız her veri, üst yönetim için anlamlı, aksiyona dönüştürülebilir içgörülere çevrilir. Teknik derinlik ile stratejik netliği aynı anda sunarız."
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-charcoal-900">
+        <div className="container-max grid grid-cols-1 lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-5">
+            <SectionHeading
+              eyebrow="Farkımız"
+              title="20 Yıllık Saha Deneyimini Ölçeklenebilir Bir Platforma Dönüştürüyoruz"
+            />
+            <Reveal delay={0.12}>
+              <div className="mt-8 space-y-5 text-white/60 leading-relaxed text-base">
+                <p>
+                  Piyasada birçok kişi yalın üretim araçlarını anlatıyor. Bizim farkımız, bunları
+                  yalnızca teorik olarak değil; yıllara dayanan üretim deneyimi, gerçek fabrika
+                  verileri, Six Sigma istatistiksel analizleri, risk yönetimi yaklaşımı ve yapay
+                  zekâ destekli eğitim teknolojileriyle bir araya getirmemiz.
+                </p>
+                <p>
+                  Eğitim alan kişi sadece &ldquo;araçları öğrenmez&rdquo;; aynı zamanda bunları
+                  kendi işletmesinde uygulayabileceği şablonlara, kontrol listelerine, veri
+                  analizlerine ve dijital destek sistemlerine de erişir.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10 rounded-sm overflow-hidden">
+              {roadmapPhases.map((phase, i) => (
+                <Reveal key={phase.phase} delay={i * 0.08} className="h-full">
+                  <div className="bg-navy-900 h-full p-8">
+                    <p className="text-[11px] uppercase tracking-widest2 text-gold-500">
+                      {phase.phase} · {phase.period}
+                    </p>
+                    <h3 className="mt-3 text-lg font-semibold text-white leading-snug">
+                      {phase.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-white/50 leading-relaxed">{phase.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { nav } from "@/lib/data";
+import { nav, moreLinks } from "@/lib/data";
 
 export default function Footer() {
   return (
@@ -13,9 +13,9 @@ export default function Footer() {
               Operasyonel Mükemmellik
             </p>
             <p className="mt-6 text-sm leading-relaxed text-white/50">
-              Teşhis etmeden iyileştiremezsiniz. Yalın Yönetim, Süreç Geliştirme, Ekonomik
-              Rasyonalite, Six Sigma ve Kurumsal Risk Yönetimini tek bir yönetim felsefesi altında
-              birleştiriyoruz.
+              Teşhis etmeden iyileştiremezsiniz. Operasyonel Mükemmellik Akademisi; eğitim,
+              danışmanlık, dijital araçlar ve yapay zekâ destekli karar desteğini tek çatı altında
+              sunar.
             </p>
             <div className="flex gap-3 mt-6">
               <a
@@ -42,8 +42,9 @@ export default function Footer() {
               Vizyon
             </h4>
             <p className="text-sm leading-relaxed text-white/50">
-              Türkiye&apos;nin operasyonel mükemmellik alanında referans stratejik danışmanlık
-              markası olmak.
+              Eğitim, danışmanlık, dijital araçlar, sertifikasyon ve yapay zekâ destekli karar
+              desteğini bir araya getiren uluslararası bir Operational Excellence Digital Academy
+              platformuna dönüşmek.
             </p>
           </div>
 
@@ -66,6 +67,18 @@ export default function Footer() {
             </h4>
             <ul className="grid grid-cols-1 gap-2.5 text-sm">
               {nav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-white/50 hover:text-gold-400 transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white/90 mb-5 mt-8">
+              Diğer Sayfalar
+            </h4>
+            <ul className="grid grid-cols-1 gap-2.5 text-sm">
+              {moreLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-white/50 hover:text-gold-400 transition-colors">
                     {item.label}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { nav } from "@/lib/data";
+import { nav, moreLinks } from "@/lib/data";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -36,12 +36,12 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-6">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm tracking-wide transition-colors duration-300 relative py-1 ${
+              className={`text-[13px] tracking-wide transition-colors duration-300 relative py-1 whitespace-nowrap ${
                 pathname === item.href ? "text-gold-400" : "text-white/70 hover:text-white"
               }`}
             >
@@ -53,14 +53,14 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Link href="/randevu" className="btn-primary !py-3 !px-6 text-xs">
             Check-Up Talep Et
           </Link>
         </div>
 
         <button
-          className="lg:hidden text-white"
+          className="xl:hidden text-white"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menüyü aç/kapat"
         >
@@ -69,14 +69,25 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="lg:hidden glass-nav border-t border-white/[0.06]">
-          <div className="flex flex-col px-6 py-6 gap-1">
+        <div className="xl:hidden glass-nav border-t border-white/[0.06]">
+          <div className="flex flex-col px-6 py-6 gap-1 max-h-[calc(100vh-5rem)] overflow-y-auto">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`py-3 text-base border-b border-white/[0.06] ${
                   pathname === item.href ? "text-gold-400" : "text-white/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            {moreLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`py-3 text-sm border-b border-white/[0.06] ${
+                  pathname === item.href ? "text-gold-400" : "text-white/55"
                 }`}
               >
                 {item.label}

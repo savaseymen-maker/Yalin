@@ -3,13 +3,21 @@
 export const nav = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
-  { href: "/hizmetler", label: "Hizmetler" },
-  { href: "/uretim-hatti-paneli", label: "Üretim Panosu" },
-  { href: "/metodolojiler", label: "Metodolojiler" },
-  { href: "/sektorler", label: "Sektörler" },
+  { href: "/akademi", label: "Akademi" },
+  { href: "/ai-asistan", label: "AI Asistan" },
+  { href: "/hizmetler", label: "Danışmanlık" },
+  { href: "/dijital-urunler", label: "Dijital Ürünler" },
   { href: "/vaka-calismalari", label: "Vaka Çalışmaları" },
   { href: "/icgoruler", label: "İçgörüler" },
   { href: "/iletisim", label: "İletişim" },
+];
+
+// Üst menüde yer almayan ama site içinde erişilebilir sayfalar (Footer'da listelenir)
+export const moreLinks = [
+  { href: "/metodolojiler", label: "Metodolojiler" },
+  { href: "/sektorler", label: "Sektörler" },
+  { href: "/akademi/ai-avatar", label: "AI Avatar Akademisi" },
+  { href: "/uretim-hatti-paneli", label: "Üretim Panosu" },
 ];
 
 export const disciplines = [
@@ -491,4 +499,218 @@ export const productionLineAlerts = [
   { time: "08:21", severity: "warning", text: "Kalite kontrolde art arda 3 ölçüm toleransın altında kaldı." },
   { time: "07:58", severity: "info", text: "Vardiya devri tamamlandı, standart iş kontrol listesi onaylandı." },
   { time: "07:40", severity: "info", text: "SMED hedefine göre model değişimi 8 dakika erken tamamlandı." },
+];
+
+// ------------------------------------------------------------------
+// Akademi — Eğitim Kütüphanesi
+// ------------------------------------------------------------------
+export const academyFormats = [
+  { title: "PDF Kitap", desc: "Her modülün özet ve referans dokümanı." },
+  { title: "Sunum", desc: "Eğitmen formatında hazır slayt seti." },
+  { title: "Çalışma Kitabı", desc: "Uygulamalı alıştırma ve doldurulabilir şablonlar." },
+  { title: "Quiz", desc: "Konu bazlı bilgi ölçme ve pekiştirme testi." },
+  { title: "Sertifika Sınavı", desc: "Modül sonu yeterlilik değerlendirmesi." },
+  { title: "Örnek Uygulama", desc: "Gerçek fabrika senaryosu üzerinden vaka analizi." },
+  { title: "Excel Dosyaları", desc: "Hazır hesaplama, analiz ve simülasyon şablonları." },
+  { title: "AI Destekli Chatbot", desc: "Konuya özel, 7/24 erişilebilir soru-cevap asistanı." },
+];
+
+export const courseStructure = [
+  { step: "01", title: "Problemin Tanımı", desc: "Konunun işletmeler için neden kritik olduğu anlatılır." },
+  { step: "02", title: "Teori", desc: "Temel kavramlar ve terminoloji netleştirilir." },
+  { step: "03", title: "Gerçek Fabrika Örneği", desc: "Sahadan doğrulanmış somut bir vaka incelenir." },
+  { step: "04", title: "Nasıl Yapılır?", desc: "Adım adım uygulama rehberi sunulur." },
+  { step: "05", title: "AI Kullanımı", desc: "Yapay zekâ destekli analiz teknikleri gösterilir." },
+  { step: "06", title: "Excel Uygulaması", desc: "Canlı hesaplama ve modelleme çalışması yapılır." },
+  { step: "07", title: "Kontrol Listesi", desc: "Sahada doğrudan kullanılabilir kontrol listesi verilir." },
+  { step: "08", title: "Şablonlar", desc: "İşletmede anında kullanılabilir dokümanlar paylaşılır." },
+  { step: "09", title: "Quiz", desc: "Öğrenmenin kalıcılığı ölçülür." },
+  { step: "10", title: "Sertifika", desc: "Yeterlilik belgelenir." },
+];
+
+export const academyCategories = [
+  {
+    key: "lean-foundation",
+    letter: "A",
+    title: "Lean Foundation",
+    count: 15,
+    desc: "Yalın düşüncenin kökenleri ve temel felsefesi.",
+    modules: [
+      "Lean History", "Toyota Production System", "Value", "Value Stream", "Flow",
+      "Pull", "Perfection", "8 Wastes", "Kaizen", "Standardization",
+      "Visual Factory", "Gemba", "Leadership", "Lean Culture", "Lean Office",
+    ],
+  },
+  {
+    key: "lean-tools",
+    letter: "B",
+    title: "Lean Tools",
+    count: 30,
+    desc: "Sahada doğrudan uygulanan yalın araç ve teknikler.",
+    modules: [
+      "5S", "VSM", "SMED", "Kanban", "Andon", "Heijunka", "Poka-Yoke",
+      "Standard Work", "Takt Time", "Yamazumi", "Jidoka", "Line Balancing",
+      "Milk Run", "Supermarket", "Cell Manufacturing",
+    ],
+    more: true,
+  },
+  {
+    key: "tpm",
+    letter: "C",
+    title: "TPM",
+    count: 15,
+    desc: "Toplam verimli bakım ve ekipman etkinliği.",
+    modules: [
+      "Autonomous Maintenance", "Planned Maintenance", "OEE", "Loss Tree",
+      "Breakdown Analysis", "MTTR", "MTBF",
+    ],
+    more: true,
+  },
+  {
+    key: "six-sigma",
+    letter: "D",
+    title: "Six Sigma",
+    count: 25,
+    desc: "Veriye dayalı kalite iyileştirme ve istatistiksel analiz.",
+    modules: [
+      "DMAIC", "SIPOC", "VOC", "CTQ", "MSA", "SPC", "DOE",
+      "Regression", "ANOVA", "Capability", "Control Plan",
+    ],
+    more: true,
+  },
+  {
+    key: "yonetim",
+    letter: "E",
+    title: "Yönetim",
+    count: 20,
+    desc: "Stratejik yönetim, performans ve risk çerçeveleri.",
+    modules: [
+      "KPI", "Balanced Scorecard", "Strategy Deployment", "Risk",
+      "Internal Audit", "Decision Matrix", "AHP", "FMEA",
+    ],
+    more: true,
+  },
+  {
+    key: "veri-analitigi",
+    letter: "F",
+    title: "Veri Analitiği",
+    count: 15,
+    desc: "Operasyonel veriyi karar destek sistemine dönüştürme.",
+    modules: ["Excel", "Power BI", "Python", "Minitab", "Dashboard", "AI Analytics"],
+  },
+];
+
+export const academyTotalModules = academyCategories.reduce((sum, c) => sum + c.count, 0);
+
+// ------------------------------------------------------------------
+// AI Avatar Akademisi
+// ------------------------------------------------------------------
+export const avatarLanguages = [
+  { title: "Türkçe", desc: "Ana dilde, yerel örneklerle zenginleştirilmiş anlatım." },
+  { title: "İngilizce (Amerikan Aksanı)", desc: "Uluslararası kurumsal müşteriler için." },
+  { title: "İngilizce (İngiliz Aksanı)", desc: "Avrupa ve Commonwealth pazarları için." },
+];
+
+export const avatarVideoLengths = ["5 dk", "10 dk", "20 dk", "45 dk", "90 dk"];
+
+export const avatarCapabilities = [
+  { title: "Sunum", desc: "Dijital avatar, eğitim içeriğini bizzat anlatır." },
+  { title: "Slayt Gösterimi", desc: "Konuya eşlik eden görsel slaytları eş zamanlı gösterir." },
+  { title: "Grafik Anlatımı", desc: "Veri ve grafikleri sesli olarak yorumlar." },
+  { title: "Animasyon", desc: "Karmaşık kavramları animasyonla sadeleştirir." },
+];
+
+export const avatarQualityPoints = [
+  {
+    title: "Profesyonel Stüdyo Seslendirmesi",
+    desc: "Her video, stüdyo kalitesinde ses işleme standardıyla üretilir.",
+  },
+  {
+    title: "Aksana Özel Prodüksiyon",
+    desc: "Amerikan ve İngiliz aksanları ayrı ayrı hazırlanarak hedef kitleye uyarlanır.",
+  },
+  {
+    title: "Tutarlı Marka Kimliği",
+    desc: "Avatar, tüm modüllerde aynı görsel dil ve anlatım tonuyla görünür.",
+  },
+];
+
+// ------------------------------------------------------------------
+// Dijital Ürünler
+// ------------------------------------------------------------------
+export const digitalProducts = [
+  { title: "PDF Kitaplar", desc: "Her disiplin için özet referans kitapları." },
+  { title: "E-Kitaplar", desc: "Derinlemesine konu anlatımlı dijital yayınlar." },
+  { title: "Eğitim Sunumları", desc: "Kurum içi eğitimlerde kullanıma hazır slayt setleri." },
+  { title: "AI Avatar Videoları", desc: "Çok dilli, avatar anlatımlı eğitim videoları." },
+  { title: "Excel Araçları", desc: "OEE, kapasite ve maliyet hesaplama şablonları." },
+  { title: "KPI Dashboard Şablonları", desc: "Yönetim raporlaması için hazır gösterge panoları." },
+  { title: "Kontrol Listeleri", desc: "Sahada doğrudan kullanılabilir uygulama kontrolleri." },
+  { title: "Denetim Formları", desc: "İç denetim ve uygunluk değerlendirme formları." },
+  { title: "Kaizen Formları", desc: "Sürekli iyileştirme önerisi ve takip formları." },
+  { title: "OEE Hesaplayıcıları", desc: "Ekipman etkinliği için hazır hesaplama araçları." },
+  { title: "SPC Şablonları", desc: "İstatistiksel proses kontrol grafik şablonları." },
+  { title: "FMEA Şablonları", desc: "Hata modu ve etkileri analizi dokümanları." },
+  { title: "VSM Şablonları", desc: "Değer akışı haritalama çalışma dosyaları." },
+  { title: "A3 Problem Çözme Formları", desc: "Yapılandırılmış problem çözme raporlama şablonu." },
+  { title: "İç Denetim Formları", desc: "Sistematik iç denetim yürütme dokümanları." },
+  { title: "Risk Matrisi Şablonları", desc: "Operasyonel risklerin önceliklendirilmesi için matrisler." },
+  { title: "Operasyonel Sağlık Raporları", desc: "Check-Up sonrası örnek yönetim raporu formatı, 100 sayfaya kadar." },
+];
+
+// ------------------------------------------------------------------
+// AI Operasyonel Asistan
+// ------------------------------------------------------------------
+export const aiAssistantNames = ["Operasyonel Mükemmellik GPT", "SavaşGPT", "LeanGPT"];
+
+export const aiAssistantQuestions = [
+  "OEE nasıl hesaplanır?",
+  "Bu Pareto grafiği doğru mu?",
+  "Bu SPC grafiğini yorumla.",
+  "Bu süreçte israf var mı?",
+];
+
+export const aiAssistantSteps = [
+  {
+    title: "Eğitim",
+    desc: "İşletme, ekibiyle birlikte akademi modüllerini tamamlar ve ortak bir terminolojiye kavuşur.",
+  },
+  {
+    title: "Kendi Bilgi Tabanı",
+    desc: "Şirketin kendi süreç dokümanları, KPI'ları ve verileriyle asistan özelleştirilir.",
+  },
+  {
+    title: "Günlük Kullanım",
+    desc: "Ekipler, sahadan çıkmadan saniyeler içinde analiz ve yorum desteği alır.",
+  },
+];
+
+// ------------------------------------------------------------------
+// Yol Haritası (18 Ay)
+// ------------------------------------------------------------------
+export const roadmapPhases = [
+  {
+    phase: "Aşama 1",
+    period: "0–3 Ay",
+    title: "Temel İçerik",
+    desc: "Marka kimliği, eğitim şablonu ve ilk 10 modül (5S, Kaizen, OEE, VSM, PDCA, A3, 8 İsraf, Problem Çözme, KPI); Türkçe ve İngilizce dokümanlar.",
+  },
+  {
+    phase: "Aşama 2",
+    period: "3–6 Ay",
+    title: "Dijital Akademi",
+    desc: "Avatar videoları, LMS altyapısı, quiz ve sertifikasyon sistemi, web sitesi ve ilk kurumsal satışlar.",
+  },
+  {
+    phase: "Aşama 3",
+    period: "6–12 Ay",
+    title: "Danışmanlık Entegrasyonu",
+    desc: "Operasyonel Check-up sistemi, olgunluk modeli, denetim araçları ve sektörel vaka kütüphanesi.",
+  },
+  {
+    phase: "Aşama 4",
+    period: "12–18 Ay",
+    title: "Yapay Zekâ Platformu",
+    desc: "Eğitilmiş operasyon asistanı, şirket dokümanlarıyla çalışan bilgi tabanı, çok dilli içerik ve uluslararası pazarlama.",
+  },
 ];
